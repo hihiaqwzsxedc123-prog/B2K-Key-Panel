@@ -1,0 +1,1256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>B2K TEAM - Pro Key Panel</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+:root {
+  --primary: #ff75d1;
+  --primary-glow: rgba(255, 117, 209, 0.18);
+  --bg-main: #070a0e;
+  --bg-card: rgba(14, 19, 27, 0.9);
+  --border-color: rgba(255, 255, 255, 0.06);
+}
+
+.theme-green {
+  --primary: #5affb0;
+  --primary-glow: rgba(90, 255, 176, 0.18);
+}
+
+.theme-blue {
+  --primary: #75baff;
+  --primary-glow: rgba(117, 186, 255, 0.18);
+}
+
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+body{
+  font-family:Inter,sans-serif;
+  background:var(--bg-main);
+  color:#fff;
+  min-height:100vh;
+  overflow-x:hidden;
+  transition: background 0.3s ease;
+}
+
+button,input,select{
+  font-family:inherit;
+}
+
+button{
+  cursor:pointer;
+}
+
+/* ================= BACKGROUND ================= */
+
+body::before{
+  content:"";
+  position:fixed;
+  width:350px;
+  height:350px;
+  top:-180px;
+  left:-150px;
+  background:var(--primary-glow);
+  filter:blur(100px);
+  border-radius:50%;
+  pointer-events:none;
+  transition: background 0.3s ease;
+}
+
+body::after{
+  content:"";
+  position:fixed;
+  width:300px;
+  height:300px;
+  right:-150px;
+  bottom:-150px;
+  background:var(--primary-glow);
+  filter:blur(100px);
+  border-radius:50%;
+  pointer-events:none;
+}
+
+/* ================= SIDEBAR ================= */
+
+.sidebar{
+  position:fixed;
+  left:0;
+  top:0;
+  bottom:0;
+  width:250px;
+  background:#0b0f16;
+  border-right:1px solid var(--border-color);
+  padding:20px 14px;
+  z-index:1000;
+  transition:.3s;
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  padding:5px 8px 25px;
+}
+
+.panel-logo{
+  width:48px;
+  height:48px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:15px;
+  background:var(--primary-glow);
+  border:1px solid var(--primary);
+  box-shadow:
+    0 0 18px var(--primary-glow),
+    inset 0 0 15px var(--primary-glow);
+}
+
+.panel-logo svg{
+  width:27px;
+  height:27px;
+  fill:none;
+  stroke:var(--primary);
+  stroke-width:1.7;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+  filter: drop-shadow(0 0 5px var(--primary));
+}
+
+.brand-text h2{
+  font-size:15px;
+  font-weight:800;
+}
+
+.brand-text p{
+  color:#666d78;
+  font-size:10px;
+  margin-top:3px;
+}
+
+.nav-title{
+  color:#555d68;
+  font-size:9px;
+  letter-spacing:1.5px;
+  margin:10px 10px 8px;
+}
+
+.nav{
+  display:flex;
+  flex-direction:column;
+  gap:4px;
+}
+
+.nav button{
+  width:100%;
+  display:flex;
+  align-items:center;
+  gap:11px;
+  padding:12px 13px;
+  border:1px solid transparent;
+  border-radius:12px;
+  background:transparent;
+  color:#818894;
+  text-align:left;
+  font-size:12px;
+  transition:.2s;
+}
+
+.nav button:hover{
+  color:#fff;
+  background:rgba(255,255,255,.035);
+}
+
+.nav button.active{
+  color:var(--primary);
+  background:var(--primary-glow);
+  border-color:var(--primary);
+}
+
+.nav-icon{
+  width:20px;
+  text-align:center;
+  font-size:14px;
+}
+
+.sidebar-bottom{
+  position:absolute;
+  left:14px;
+  right:14px;
+  bottom:18px;
+}
+
+.logout{
+  width:100%;
+  border:1px solid var(--border-color);
+  background:rgba(255,255,255,.025);
+  color:#777f8b;
+  border-radius:12px;
+  padding:11px;
+  font-size:11px;
+}
+
+/* ================= MAIN ================= */
+
+.main{
+  margin-left:250px;
+  min-height:100vh;
+  padding:25px;
+}
+
+.topbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:25px;
+}
+
+.top-title h1{
+  font-size:22px;
+  font-weight:800;
+}
+
+.top-title p{
+  color:#69717d;
+  font-size:11px;
+  margin-top:5px;
+}
+
+.menu-btn{
+  display:none;
+  width:40px;
+  height:40px;
+  border:1px solid var(--border-color);
+  border-radius:12px;
+  background:#10151d;
+  color:#fff;
+  font-size:18px;
+}
+
+.page{
+  display:none;
+}
+
+.page.active{
+  display:block;
+}
+
+/* ================= STATS ================= */
+
+.stats{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:12px;
+  margin-bottom:18px;
+}
+
+.stat{
+  background:var(--bg-card);
+  border:1px solid var(--border-color);
+  border-radius:17px;
+  padding:17px;
+}
+
+.stat-label{
+  color:#69717d;
+  font-size:10px;
+}
+
+.stat-value{
+  font-size:23px;
+  font-weight:800;
+  margin-top:8px;
+}
+
+.stat-value.pink{
+  color:var(--primary);
+  text-shadow:0 0 15px var(--primary-glow);
+}
+
+/* ================= CARDS ================= */
+
+.card{
+  background:var(--bg-card);
+  border:1px solid var(--border-color);
+  border-radius:20px;
+  padding:20px;
+  margin-bottom:15px;
+}
+
+.card-head{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin-bottom:18px;
+}
+
+.card-head h3{
+  font-size:14px;
+}
+
+.card-head span{
+  color:#606874;
+  font-size:10px;
+}
+
+/* ================= FORMS ================= */
+
+.form-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+}
+
+.form-group{
+  display:flex;
+  flex-direction:column;
+  gap:7px;
+}
+
+.form-group.full{
+  grid-column:1/-1;
+}
+
+.form-group label{
+  color:#737b87;
+  font-size:10px;
+}
+
+.form-group input,
+.form-group select{
+  width:100%;
+  height:45px;
+  padding:0 13px;
+  color:#fff;
+  background:#090d13;
+  border:1px solid var(--border-color);
+  border-radius:12px;
+  outline:none;
+}
+
+.form-group input:focus,
+.form-group select:focus{
+  border-color:var(--primary);
+  box-shadow:0 0 15px var(--primary-glow);
+}
+
+.form-group select option{
+  background:#0d1118;
+}
+
+.generate-btn{
+  width:100%;
+  height:46px;
+  margin-top:15px;
+  border:0;
+  border-radius:13px;
+  background:var(--primary);
+  color:#090b10;
+  font-weight:800;
+  font-size:12px;
+  box-shadow:0 0 20px var(--primary-glow);
+  transition: 0.2s;
+}
+
+.generate-btn:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+/* ================= TABLE ================= */
+
+.search-row{
+  display:flex;
+  gap:10px;
+  margin-bottom:15px;
+}
+
+.search-row input,
+.search-row select{
+  height:42px;
+  border-radius:12px;
+  border:1px solid var(--border-color);
+  background:#090d13;
+  color:#fff;
+  padding:0 12px;
+  outline:none;
+}
+
+.search-row input{
+  flex:1;
+}
+
+.table-wrap{
+  overflow-x:auto;
+}
+
+table{
+  width:100%;
+  border-collapse:collapse;
+  min-width:600px;
+}
+
+th{
+  color:#5e6672;
+  font-size:9px;
+  text-align:left;
+  padding:10px;
+  border-bottom:1px solid rgba(255,255,255,.05);
+}
+
+td{
+  padding:12px 10px;
+  border-bottom:1px solid rgba(255,255,255,.035);
+  font-size:10px;
+  color:#c7ccd3;
+}
+
+.key-text{
+  color:var(--primary);
+  font-weight:700;
+  letter-spacing:1px;
+}
+
+.status{
+  display:inline-flex;
+  padding:5px 9px;
+  border-radius:20px;
+  font-size:8px;
+  font-weight:700;
+}
+
+.status.active{
+  color:#8fffc4;
+  background:rgba(90,255,165,.07);
+  border:1px solid rgba(90,255,165,.12);
+}
+
+.status.expired{
+  color:#ff8d8d;
+  background:rgba(255,70,70,.07);
+  border:1px solid rgba(255,70,70,.12);
+}
+
+.status.disabled{
+  color:#aaa;
+  background:rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.06);
+}
+
+.action-btn{
+  padding:7px 9px;
+  border-radius:9px;
+  background:rgba(255,255,255,.04);
+  color:#aeb4bd;
+  border:1px solid var(--border-color);
+  font-size:8px;
+  margin-right:3px;
+  transition: 0.2s;
+}
+
+.action-btn:hover{
+  color:#fff;
+  border-color:var(--primary);
+}
+
+.action-btn.view{
+  color:var(--primary);
+}
+
+.empty{
+  padding:40px 20px;
+  text-align:center;
+  color:#555d68;
+  font-size:11px;
+}
+
+/* ================= SETTINGS & THEMES ================= */
+
+.setting{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:15px 0;
+  border-bottom:1px solid rgba(255,255,255,.05);
+}
+
+.setting:last-child{
+  border-bottom:0;
+}
+
+.setting-info h4{
+  font-size:12px;
+  margin-bottom:4px;
+}
+
+.setting-info p{
+  color:#626a76;
+  font-size:9px;
+}
+
+.theme-options {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.theme-btn {
+  padding: 8px 14px;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  background: #090d13;
+  color: #fff;
+  font-size: 10px;
+  font-weight: 600;
+}
+
+.theme-btn.active-theme {
+  border-color: var(--primary);
+  background: var(--primary-glow);
+  color: var(--primary);
+}
+
+.switch{
+  position:relative;
+  width:43px;
+  height:23px;
+}
+
+.switch input{
+  opacity:0;
+  width:0;
+  height:0;
+}
+
+.slider{
+  position:absolute;
+  inset:0;
+  background:#222831;
+  border-radius:30px;
+  transition:.2s;
+}
+
+.slider:before{
+  content:"";
+  position:absolute;
+  width:17px;
+  height:17px;
+  left:3px;
+  top:3px;
+  border-radius:50%;
+  background:#777;
+  transition:.2s;
+}
+
+.switch input:checked + .slider{
+  background:var(--primary-glow);
+}
+
+.switch input:checked + .slider:before{
+  transform:translateX(20px);
+  background:var(--primary);
+  box-shadow:0 0 10px var(--primary);
+}
+
+.danger-btn{
+  margin-top:15px;
+  padding:11px 15px;
+  border-radius:11px;
+  border:1px solid rgba(255,70,70,.15);
+  background:rgba(255,70,70,.06);
+  color:#ff8585;
+  font-size:10px;
+}
+
+/* ================= DEVICE & PRO FEATURES ================= */
+
+.device-box{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  padding:16px;
+  background:#090d13;
+  border:1px solid var(--border-color);
+  border-radius:15px;
+}
+
+.device-icon{
+  width:42px;
+  height:42px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:var(--primary-glow);
+  border-radius:12px;
+  font-size:20px;
+}
+
+.device-info h4{
+  font-size:12px;
+}
+
+.device-info p{
+  color:#626a76;
+  font-size:9px;
+  margin-top:4px;
+}
+
+/* ================= MODAL ================= */
+
+.overlay{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.72);
+  backdrop-filter:blur(10px);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:18px;
+  z-index:9999;
+}
+
+.overlay.show{
+  display:flex;
+}
+
+.modal{
+  width:100%;
+  max-width:420px;
+  position:relative;
+  overflow:hidden;
+  isolation:isolate;
+  border-radius:26px;
+  padding:22px;
+  background: linear-gradient(145deg, rgba(18,22,32,.97), rgba(8,11,17,.98));
+  border:1px solid var(--primary);
+  box-shadow: 0 0 25px var(--primary-glow), 0 25px 80px rgba(0,0,0,.65);
+}
+
+.modal-head{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin-bottom:20px;
+}
+
+.modal-head h3{
+  display:flex;
+  align-items:center;
+  gap:9px;
+  margin:0;
+  font-size:19px;
+  font-weight:800;
+}
+
+.modal-crown{
+  width:23px;
+  height:23px;
+  fill:none;
+  stroke:var(--primary);
+  stroke-width:1.8;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+  filter: drop-shadow(0 0 5px var(--primary));
+}
+
+.close{
+  width:34px;
+  height:34px;
+  border:1px solid var(--border-color);
+  border-radius:12px;
+  background:rgba(255,255,255,.04);
+  color:#aaa;
+  font-size:21px;
+  cursor:pointer;
+}
+
+.close:hover{
+  color:#fff;
+  background:var(--primary-glow);
+}
+
+.key-main{
+  text-align:center;
+  padding:20px 14px;
+  margin-bottom:16px;
+  border-radius:20px;
+  background:rgba(255,255,255,.035);
+  border:1px solid var(--primary);
+}
+
+.key-label{
+  font-size:10px;
+  color:#777;
+  text-transform:uppercase;
+  letter-spacing:2px;
+  margin-bottom:9px;
+}
+
+#modalKey{
+  display:block;
+  font-size:25px;
+  letter-spacing:3px;
+  color:var(--primary);
+  text-shadow: 0 0 8px var(--primary);
+  word-break:break-all;
+}
+
+.detail{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:15px;
+  padding:13px 14px;
+  margin-top:8px;
+  border-radius:14px;
+  background:rgba(255,255,255,.025);
+  border:1px solid var(--border-color);
+}
+
+.detail span{
+  color:#777;
+  font-size:12px;
+}
+
+.detail b{
+  color:#eee;
+  font-size:12px;
+  text-align:right;
+}
+
+.modal-actions{
+  display:flex;
+  gap:10px;
+  margin-top:18px;
+}
+
+.modal-actions button{
+  flex:1;
+  min-height:46px;
+  border:0;
+  border-radius:14px;
+  cursor:pointer;
+  font-weight:800;
+  font-size:12px;
+}
+
+.modal-actions button:first-child{
+  color:#080a0f;
+  background:var(--primary);
+  box-shadow:0 0 18px var(--primary-glow);
+}
+
+.modal-actions button:last-child{
+  color:#aaa;
+  background:rgba(255,255,255,.05);
+  border:1px solid var(--border-color);
+}
+
+/* ================= TOAST ================= */
+
+.toast{
+  position:fixed;
+  left:50%;
+  bottom:22px;
+  transform:translate(-50%,20px);
+  opacity:0;
+  pointer-events:none;
+  padding:11px 17px;
+  background:#141922;
+  border:1px solid var(--primary);
+  border-radius:12px;
+  color:#ddd;
+  font-size:10px;
+  box-shadow:0 10px 30px rgba(0,0,0,.4);
+  transition:.25s;
+  z-index:11000;
+}
+
+.toast.show{
+  opacity:1;
+  transform:translate(-50%,0);
+}
+
+/* RESPONSIVE */
+@media(max-width:800px){
+  .sidebar{ transform:translateX(-100%); width:255px; }
+  .sidebar.open{ transform:translateX(0); }
+  .main{ margin-left:0; padding:18px; }
+  .menu-btn{ display:block; }
+  .stats{ grid-template-columns:1fr 1fr; }
+  .form-grid{ grid-template-columns:1fr; }
+}
+</style>
+</head>
+
+<body>
+
+<aside class="sidebar" id="sidebar">
+  <div class="brand">
+    <div class="panel-logo">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M3 7.5L7.2 11L12 4L16.8 11L21 7.5L19 19H5L3 7.5Z"></path>
+        <path d="M5 19H19"></path>
+      </svg>
+    </div>
+    <div class="brand-text">
+      <h2>B2K TEAM</h2>
+      <p>PRO MANAGEMENT</p>
+    </div>
+  </div>
+
+  <div class="nav-title">MAIN</div>
+  <nav class="nav">
+    <button class="active" onclick="showPage('dashboard',this)"><span class="nav-icon">⌂</span> Dashboard</button>
+    <button onclick="showPage('generate',this)"><span class="nav-icon">＋</span> Generate Keys</button>
+    <button onclick="showPage('all',this)"><span class="nav-icon">▤</span> All Keys</button>
+    <button onclick="showPage('active',this)"><span class="nav-icon">●</span> Active</button>
+    <button onclick="showPage('expired',this)"><span class="nav-icon">◷</span> Expired</button>
+    <button onclick="showPage('disabled',this)"><span class="nav-icon">⊘</span> Disabled</button>
+
+    <div class="nav-title">SYSTEM & TOOLS</div>
+    <button onclick="showPage('devices',this)"><span class="nav-icon">▣</span> Devices</button>
+    <button onclick="showPage('settings',this)"><span class="nav-icon">⚙</span> Settings</button>
+    <button onclick="showPage('admin',this)"><span class="nav-icon">♛</span> Admin Panel</button>
+  </nav>
+
+  <div class="sidebar-bottom">
+    <button class="logout" onclick="toast('Logged out successfully')">⇥ &nbsp; Logout</button>
+  </div>
+</aside>
+
+<main class="main">
+  <div class="topbar">
+    <div class="top-title">
+      <h1 id="pageTitle">Dashboard</h1>
+      <p>B2K TEAM Professional Advanced System</p>
+    </div>
+    <button class="menu-btn" onclick="toggleSidebar()">☰</button>
+  </div>
+
+  <!-- DASHBOARD -->
+  <section class="page active" id="dashboard">
+    <div class="stats">
+      <div class="stat"><div class="stat-label">TOTAL KEYS</div><div class="stat-value" id="totalStat">0</div></div>
+      <div class="stat"><div class="stat-label">ACTIVE</div><div class="stat-value pink" id="activeStat">0</div></div>
+      <div class="stat"><div class="stat-label">EXPIRED</div><div class="stat-value" id="expiredStat">0</div></div>
+      <div class="stat"><div class="stat-label">DISABLED</div><div class="stat-value" id="disabledStat">0</div></div>
+    </div>
+
+    <div class="card">
+      <div class="card-head"><h3>Quick Generate</h3><span>11 DIGIT KEYS</span></div>
+      <div class="form-grid">
+        <div class="form-group">
+          <label>DURATION</label>
+          <select id="quickDuration">
+            <option value="1">1 Day</option>
+            <option value="3">3 Days</option>
+            <option value="7">7 Days</option>
+            <option value="15">15 Days</option>
+            <option value="30">30 Days</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>QUANTITY</label>
+          <input id="quickQuantity" type="number" min="1" max="100" value="1">
+        </div>
+      </div>
+      <button class="generate-btn" onclick="quickGenerate()">GENERATE KEYS</button>
+    </div>
+
+    <div class="card">
+      <div class="card-head"><h3>Recent Keys</h3><span>LAST GENERATED</span></div>
+      <div id="recentKeys"></div>
+    </div>
+  </section>
+
+  <!-- GENERATE -->
+  <section class="page" id="generate">
+    <div class="card">
+      <div class="card-head"><h3>Generate Access Keys</h3><span>SECURE</span></div>
+      <div class="form-grid">
+        <div class="form-group"><label>KEY FORMAT</label><input value="11 Digit Numeric" disabled></div>
+        <div class="form-group">
+          <label>DURATION</label>
+          <select id="duration">
+            <option value="1">1 Day</option>
+            <option value="3">3 Days</option>
+            <option value="7">7 Days</option>
+            <option value="15">15 Days</option>
+            <option value="30">30 Days</option>
+          </select>
+        </div>
+        <div class="form-group full"><label>QUANTITY</label><input id="quantity" type="number" min="1" max="100" value="1"></div>
+      </div>
+      <button class="generate-btn" onclick="generateKeys()">GENERATE ACCESS KEYS</button>
+    </div>
+    <div class="card">
+      <div class="card-head"><h3>Generated Keys</h3><span id="generatedCount">0 KEYS</span></div>
+      <div id="generatedKeys"></div>
+    </div>
+  </section>
+
+  <!-- ALL -->
+  <section class="page" id="all">
+    <div class="card">
+      <div class="card-head"><h3>All Keys</h3><span>KEY DATABASE</span></div>
+      <div class="search-row">
+        <input id="searchAll" placeholder="Search key..." oninput="renderAllKeys()">
+        <select id="filterAll" onchange="renderAllKeys()">
+          <option value="all">All</option>
+          <option value="active">Active</option>
+          <option value="expired">Expired</option>
+          <option value="disabled">Disabled</option>
+        </select>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>KEY</th><th>DURATION</th><th>STATUS</th><th>CREATED</th><th>ACTION</th></tr></thead>
+          <tbody id="allKeysTable"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ACTIVE -->
+  <section class="page" id="active"><div class="card"><div class="card-head"><h3>Active Keys</h3><span>VALID</span></div><div id="activeKeys"></div></div></section>
+  <!-- EXPIRED -->
+  <section class="page" id="expired"><div class="card"><div class="card-head"><h3>Expired Keys</h3><span>EXPIRED</span></div><div id="expiredKeys"></div></div></section>
+  <!-- DISABLED -->
+  <section class="page" id="disabled"><div class="card"><div class="card-head"><h3>Disabled Keys</h3><span>DISABLED</span></div><div id="disabledKeys"></div></div></section>
+
+  <!-- DEVICES -->
+  <section class="page" id="devices">
+    <div class="card">
+      <div class="card-head"><h3>Devices Management</h3><span>LINKED</span></div>
+      <div class="device-box"><div class="device-icon">📱</div><div class="device-info"><h4>No active devices</h4><p>Connected device HWID info will display here automatically.</p></div></div>
+    </div>
+  </section>
+
+  <!-- SETTINGS -->
+  <section class="page" id="settings">
+    <div class="card">
+      <div class="card-head"><h3>System Settings</h3><span>CUSTOMIZATION</span></div>
+      
+      <div class="setting">
+        <div class="setting-info"><h4>Panel Theme</h4><p>Choose your preferred interface glowing accent.</p></div>
+        <div class="theme-options">
+          <button class="theme-btn active-theme" onclick="setTheme('pink', this)">Pink Neon</button>
+          <button class="theme-btn" onclick="setTheme('green', this)">Cyber Green</button>
+          <button class="theme-btn" onclick="setTheme('blue', this)">Royal Blue</button>
+        </div>
+      </div>
+
+      <div class="setting">
+        <div class="setting-info"><h4>Auto Refresh</h4><p>Automatically refresh stats and key expiration checks.</p></div>
+        <label class="switch"><input type="checkbox" checked><span class="slider"></span></label>
+      </div>
+
+      <button class="danger-btn" onclick="clearData()">CLEAR LOCAL DATA</button>
+    </div>
+  </section>
+
+  <!-- ADMIN -->
+  <section class="page" id="admin">
+    <div class="card">
+      <div class="card-head"><h3>Admin Dashboard</h3><span>SECURITY LEVEL 10</span></div>
+      <div class="device-box"><div class="device-icon">♛</div><div class="device-info"><h4>B2K Administrator</h4><p>Full database encryption and key governance active.</p></div></div>
+    </div>
+  </section>
+</main>
+
+<!-- VIEW KEY MODAL -->
+<div class="overlay" id="modalOverlay">
+  <div class="modal">
+    <div class="modal-head">
+      <h3>
+        <svg class="modal-crown" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M3 7.5L7.2 11L12 4L16.8 11L21 7.5L19 19H5L3 7.5Z"></path>
+          <path d="M5 19H19"></path>
+        </svg>
+        Key Details
+      </h3>
+      <button class="close" onclick="closeModal()">×</button>
+    </div>
+    <div class="key-main">
+      <div class="key-label">ACCESS KEY</div>
+      <b id="modalKey">---</b>
+    </div>
+    <div class="detail"><span>Duration</span><b id="modalDuration">---</b></div>
+    <div class="detail"><span>Status</span><b id="modalStatus">---</b></div>
+    <div class="detail"><span>Created</span><b id="modalCreated">---</b></div>
+    <div class="detail"><span>Expires</span><b id="modalExpires">---</b></div>
+    <div class="detail"><span>Device</span><b id="modalDevice">Not linked</b></div>
+    <div class="modal-actions">
+      <button onclick="copyModalKey()">COPY KEY</button>
+      <button onclick="closeModal()">CLOSE</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+let keys = JSON.parse(localStorage.getItem("B2K_KEYS") || "[]");
+let currentModalIndex = null;
+
+const titles = {
+  dashboard:"Dashboard", generate:"Generate Keys", all:"All Keys",
+  active:"Active Keys", expired:"Expired Keys", disabled:"Disabled Keys",
+  devices:"Devices", settings:"Settings", admin:"Admin Panel"
+};
+
+function showPage(page,button){
+  document.querySelectorAll(".page").forEach(p => p.classList.remove("active"));
+  document.getElementById(page)?.classList.add("active");
+  document.querySelectorAll(".nav button").forEach(b => b.classList.remove("active"));
+  button?.classList.add("active");
+  document.getElementById("pageTitle").textContent = titles[page] || page;
+  document.getElementById("sidebar").classList.remove("open");
+  refreshUI();
+}
+
+function toggleSidebar(){
+  document.getElementById("sidebar").classList.toggle("open");
+}
+
+function setTheme(themeName, btn) {
+  document.body.className = '';
+  if(themeName === 'green') document.body.classList.add('theme-green');
+  if(themeName === 'blue') document.body.classList.add('theme-blue');
+  
+  document.querySelectorAll('.theme-btn').forEach(b => b.classList.remove('active-theme'));
+  btn.classList.add('active-theme');
+  toast(`Theme changed to ${themeName}`);
+}
+
+function saveKeys(){
+  localStorage.setItem("B2K_KEYS", JSON.stringify(keys));
+}
+
+function randomKey(){
+  let key = "";
+  for(let i=0; i<11; i++){
+    key += Math.floor(Math.random()*10);
+  }
+  return key;
+}
+
+function uniqueKey(){
+  let key;
+  do { key = randomKey(); } while(keys.some(k => k.key === key));
+  return key;
+}
+
+function createKeys(duration, quantity){
+  duration = Number(duration);
+  quantity = Math.max(1, Math.min(100, Number(quantity)));
+  const created = new Date();
+
+  for(let i=0; i<quantity; i++){
+    const key = uniqueKey();
+    const expires = new Date(created);
+    expires.setDate(expires.getDate() + duration);
+
+    keys.unshift({
+      key: key,
+      duration: duration,
+      status: "active",
+      created: created.toISOString(),
+      expires: expires.toISOString(),
+      device: "Not linked"
+    });
+  }
+  saveKeys();
+}
+
+function generateKeys(){
+  createKeys(document.getElementById("duration").value, document.getElementById("quantity").value);
+  toast(`Keys generated successfully!`);
+  refreshUI();
+}
+
+function quickGenerate(){
+  createKeys(document.getElementById("quickDuration").value, document.getElementById("quickQuantity").value);
+  toast(`Quick keys generated successfully!`);
+  refreshUI();
+}
+
+function getStatus(k){
+  if(k.status === "disabled") return "disabled";
+  if(new Date(k.expires) <= new Date()) return "expired";
+  return "active";
+}
+
+function statusText(status){
+  return status.toUpperCase();
+}
+
+function updateStatuses(){
+  keys.forEach(k => {
+    if(k.status !== "disabled"){
+      k.status = new Date(k.expires) <= new Date() ? "expired" : "active";
+    }
+  });
+  saveKeys();
+}
+
+function formatDate(date){
+  if(!date) return "---";
+  return new Date(date).toLocaleDateString("en-GB", {day:"2-digit", month:"2-digit", year:"numeric"});
+}
+
+function refreshStats(){
+  updateStatuses();
+  document.getElementById("totalStat").textContent = keys.length;
+  document.getElementById("activeStat").textContent = keys.filter(k => getStatus(k)==="active").length;
+  document.getElementById("expiredStat").textContent = keys.filter(k => getStatus(k)==="expired").length;
+  document.getElementById("disabledStat").textContent = keys.filter(k => getStatus(k)==="disabled").length;
+}
+
+function viewKey(index){
+  currentModalIndex = index;
+  const k = keys[index];
+  if(!k) return;
+
+  document.getElementById("modalKey").textContent = k.key;
+  document.getElementById("modalDuration").textContent = k.duration + (k.duration === 1 ? " Day":" Days");
+  document.getElementById("modalStatus").textContent = statusText(getStatus(k));
+  document.getElementById("modalCreated").textContent = formatDate(k.created);
+  document.getElementById("modalExpires").textContent = formatDate(k.expires);
+  document.getElementById("modalDevice").textContent = k.device || "Not linked";
+  document.getElementById("modalOverlay").classList.add("show");
+}
+
+function closeModal(){
+  document.getElementById("modalOverlay").classList.remove("show");
+  currentModalIndex = null;
+}
+
+function copyText(text){
+  navigator.clipboard?.writeText(text).then(() => toast("Copied to clipboard!"));
+}
+
+function copyModalKey(){
+  if(currentModalIndex !== null && keys[currentModalIndex]) copyText(keys[currentModalIndex].key);
+}
+
+function copyKey(index){
+  if(keys[index]) copyText(keys[index].key);
+}
+
+function toggleKey(index){
+  if(!keys[index]) return;
+  const current = getStatus(keys[index]);
+  keys[index].status = (current === "disabled") ? "active" : "disabled";
+  saveKeys();
+  toast(keys[index].status === "active" ? "Key Enabled" : "Key Disabled");
+  refreshUI();
+}
+
+function deleteKey(index){
+  if(!keys[index]) return;
+  if(confirm("Delete key " + keys[index].key + "?")){
+    keys.splice(index, 1);
+    saveKeys();
+    toast("Key deleted");
+    refreshUI();
+  }
+}
+
+function keyRow(k, index){
+  const status = getStatus(k);
+  return `
+    <tr>
+      <td><span class="key-text">${k.key}</span></td>
+      <td>${k.duration} ${k.duration === 1 ? "Day":"Days"}</td>
+      <td><span class="status ${status}">${statusText(status)}</span></td>
+      <td>${formatDate(k.created)}</td>
+      <td>
+        <button class="action-btn view" onclick="viewKey(${index})">VIEW</button>
+        <button class="action-btn" onclick="copyKey(${index})">COPY</button>
+        <button class="action-btn" onclick="toggleKey(${index})">${status==="disabled" ? "ENABLE":"DISABLE"}</button>
+        <button class="action-btn" onclick="deleteKey(${index})">DELETE</button>
+      </td>
+    </tr>
+  `;
+}
+
+function renderAllKeys(){
+  updateStatuses();
+  const search = (document.getElementById("searchAll")?.value || "").toLowerCase();
+  const filter = document.getElementById("filterAll")?.value || "all";
+  const filtered = keys.filter(k => k.key.includes(search) && (filter === "all" || getStatus(k) === filter));
+  const table = document.getElementById("allKeysTable");
+
+  if(!filtered.length){
+    table.innerHTML = `<tr><td colspan="5"><div class="empty">No keys found</div></td></tr>`;
+    return;
+  }
+  table.innerHTML = filtered.map(k => keyRow(k, keys.indexOf(k))).join("");
+}
+
+function renderGenerated(){
+  const container = document.getElementById("generatedKeys");
+  const recent = keys.slice(0, 20);
+  document.getElementById("generatedCount").textContent = keys.length + (keys.length===1 ? " KEY":" KEYS");
+
+  if(!recent.length){ container.innerHTML = `<div class="empty">No keys generated yet</div>`; return; }
+  container.innerHTML = `<div class="table-wrap"><table><thead><tr><th>KEY</th><th>DURATION</th><th>STATUS</th><th>ACTION</th></tr></thead><tbody>${recent.map((k, i) => `<tr><td><span class="key-text">${k.key}</span></td><td>${k.duration} Days</td><td><span class="status ${getStatus(k)}">${statusText(getStatus(k))}</span></td><td><button class="action-btn view" onclick="viewKey(${keys.indexOf(k)})">VIEW</button><button class="action-btn" onclick="copyKey(${keys.indexOf(k)})">COPY</button></td></tr>`).join("")}</tbody></table></div>`;
+}
+
+function renderRecent(){
+  const container = document.getElementById("recentKeys");
+  const recent = keys.slice(0, 5);
+  if(!recent.length){ container.innerHTML = `<div class="empty">No keys generated yet</div>`; return; }
+  container.innerHTML = `<div class="table-wrap"><table><thead><tr><th>KEY</th><th>DURATION</th><th>STATUS</th><th>ACTION</th></tr></thead><tbody>${recent.map(k => `<tr><td><span class="key-text">${k.key}</span></td><td>${k.duration} Days</td><td><span class="status ${getStatus(k)}">${statusText(getStatus(k))}</span></td><td><button class="action-btn view" onclick="viewKey(${keys.indexOf(k)})">VIEW</button><button class="action-btn" onclick="copyKey(${keys.indexOf(k)})">COPY</button></td></tr>`).join("")}</tbody></table></div>`;
+}
+
+function renderFilteredPage(containerId, statusWanted){
+  const container = document.getElementById(containerId);
+  const filtered = keys.filter(k => getStatus(k) === statusWanted);
+  if(!filtered.length){ container.innerHTML = `<div class="empty">No ${statusWanted} keys</div>`; return; }
+  container.innerHTML = `<div class="table-wrap"><table><thead><tr><th>KEY</th><th>DURATION</th><th>STATUS</th><th>CREATED</th><th>ACTION</th></tr></thead><tbody>${filtered.map(k => keyRow(k, keys.indexOf(k))).join("")}</tbody></table></div>`;
+}
+
+function refreshUI(){
+  refreshStats();
+  renderRecent();
+  renderGenerated();
+  renderAllKeys();
+  renderFilteredPage("activeKeys", "active");
+  renderFilteredPage("expiredKeys", "expired");
+  renderFilteredPage("disabledKeys", "disabled");
+}
+
+function clearData(){
+  if(confirm("Clear all local keys?")){
+    keys = [];
+    saveKeys();
+    refreshUI();
+    toast("Local data cleared");
+  }
+}
+
+let toastTimer;
+function toast(message){
+  const el = document.getElementById("toast");
+  el.textContent = message;
+  el.classList.add("show");
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => el.classList.remove("show"), 2200);
+}
+
+refreshUI();
+setInterval(refreshStats, 30000);
+</script>
+</body>
+</html>
